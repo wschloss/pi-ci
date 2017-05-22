@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  viz:
+    image: wcschlosser/visualizer-rpi:0.1.0
+    ports:
+    - "8080:8080"
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+    volumes:
+    - "/var/run/docker.sock:/var/run/docker.sock"
+
+  gogs:
+    image: wcschlosser/gogs-rpi:0.1.0
+    ports:
+    - "3000:3000"
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+    volumes:
+    - "/gogs-volume/database/:/data/database/"
+    - "/gogs-volume/logs/:/data/logs/"
+    - "/gogs-volume/repositories/:/data/repositories/"
+
+  registry:
+    image: wcschlosser/registry-rpi:0.1.0
+    ports:
+    - "5000:5000"
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+    environment:
+    - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/data/docker-store
+    volumes:
+    - "/registry-volume/docker-store/:/data/docker-store/"
+
+  jenkins:
+    image: wcschlosser/jenkins-rpi:0.1.0
+    ports:
+    - "8000:8080"
+    - "50000:50000"
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+    volumes:
+    - "/jenkins-volume/jenkins_home/:/var/jenkins_home/"
+    - "/var/run/docker.sock:/var/run/docker.sock"

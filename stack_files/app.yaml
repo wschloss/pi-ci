@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  basic_node_service:
+    image: registry:5000/basic-node-service:latest # requires the service to be in the registry already
+    ports:
+    - "9096:8080"
+    deploy:
+      replicas: 6
+      placement:
+        constraints:
+        - node.role == worker
