@@ -5,6 +5,8 @@ services:
     image: wcschlosser/visualizer-rpi:0.1.0
     ports:
     - "8080:8080"
+    networks:
+    - pi-swarm
     deploy:
       replicas: 1
       placement:
@@ -17,6 +19,8 @@ services:
     image: wcschlosser/gogs-rpi:0.1.0
     ports:
     - "3000:3000"
+    networks:
+    - pi-swarm
     deploy:
       replicas: 1
       placement:
@@ -31,6 +35,8 @@ services:
     image: wcschlosser/registry-rpi:0.1.0
     ports:
     - "5000:5000"
+    networks:
+    - pi-swarm
     deploy:
       replicas: 1
       placement:
@@ -45,7 +51,8 @@ services:
     image: wcschlosser/jenkins-rpi:0.1.0
     ports:
     - "8000:8080"
-    - "50000:50000"
+    networks:
+    - pi-swarm
     deploy:
       replicas: 1
       placement:
@@ -54,3 +61,19 @@ services:
     volumes:
     - "/jenkins-volume/jenkins_home/:/var/jenkins_home/"
     - "/var/run/docker.sock:/var/run/docker.sock"
+
+  nginx:
+    image: wcschlosser/nginx-rpi:0.1.0
+    ports:
+    - "80:80"
+    networks:
+    - pi-swarm
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+
+networks:
+  pi-swarm:
+    external: true
