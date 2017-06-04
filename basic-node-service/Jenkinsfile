@@ -1,0 +1,18 @@
+node {
+
+  checkout scm
+
+  stage('Build') {
+    sh 'docker build -t basic-node-service:latest .'
+  }
+
+  stage('Push') {
+    sh 'docker tag basic-node-service:latest registry:5000/basic-node-service:latest'
+    sh 'docker push registry:5000/basic-node-service:latest'
+  }
+
+  stage('Deploy')  {
+    sh 'docker service update --replicas=4 --image=registry:5000/basic-node-service:latest app_basic_node_service'
+  }
+
+}
