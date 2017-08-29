@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian
+FROM resin/rpi-raspbian:jessie-20170816
 
 RUN apt-get -y update && \
     apt-get install -y nginx

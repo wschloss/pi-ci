@@ -1,16 +1,14 @@
 {
   "name": "basic-node-service",
-  "version": "1.0.0",
-  "description": "Hello world",
+  "version": "0.1.0-rc.1",
+  "description": "Basic service to display container hostname. Used to demonstrate container routing",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "author": "wschlosser",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2",
-    "uuid": "^3.0.1"
+    "express": "^4.15.2"
   }
 }

@@ -1,4 +1,4 @@
-FROM joherma1/rpi-jenkins:latest
+FROM joherma1/rpi-jenkins:1.6
 
 # Upgrade os from wheezy -> jessie
 # Trust the internal registry
