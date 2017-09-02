@@ -1,5 +1,8 @@
 # raspberry pi ci
 
+### TODO
+- Fix branch independence with web hook
+
 ## HOW TO
 - Prepare each with raspbian lite, a text editor, and git
 - After connecting each pi to the same network, make note of each machine's ip since it will be needed later
