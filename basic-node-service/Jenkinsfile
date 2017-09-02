@@ -14,7 +14,7 @@ node {
   }
 
   stage('Deploy')  {
-    sh "cat deploy_template.yaml | sed 's#IMAGE#registry:5000/basic-node-service:${branch}-${build_number}#g > deploy.yaml"
+    sh "cat deploy_template.yaml | sed 's#IMAGE#registry:5000/basic-node-service:${branch}-${build_number}#g' > deploy.yaml"
     sh "cat deploy.yaml"
     sh "docker stack deploy -c deploy.yaml basic_node_service"
   }
