@@ -1,9 +1,5 @@
 # raspberry pi ci
 
-### TODO
-* Debug Jenkins Gog hook for CI/CD
-* Write new swarm vizualizer
-
 ## HOW TO
 - Prepare each with raspbian lite, a text editor, and git
 - After connecting each pi to the same network, make note of each machine's ip since it will be needed later
@@ -63,4 +59,4 @@
 - You can view the app on any swarm host IP on port 9096, or deploy the sample nginx controller to provide routing to the app and visualizer:
         `docker stack deploy -c stack_files/nginx.yaml nginx`
   nginx will be on any swarm host IP on port 80
-- BUG FIX NEEDED HERE: In the gogs repo, add a webhook to jenkins (payload url http://jenkins:8080/gogs-webhook/?job=basic-node-service) in order to auto kick off the build when a push to the gogs repo occurs. Updates pushed to the gogs repo will now automatically build and rolling deploy to the swarm
+- In the gogs repo, add a webhook to jenkins (payload url http://jenkins:8080/gogs-webhook/?job=master) in order to auto kick off the build when a source control event occurs. Updates pushed to the gogs repo will now automatically build and rolling deploy to the swarm
