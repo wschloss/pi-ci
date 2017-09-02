@@ -1,18 +1,6 @@
 version: '3'
 
 services:
-  basic_node_service:
-    image: registry:5000/basic-node-service:latest
-    ports:
-    - "9096:8080"
-    networks:
-    - pi-swarm
-    deploy:
-      replicas: 6
-      placement:
-        constraints:
-        - node.role == worker
-
   nginx:
     image: wcschlosser/nginx-rpi:0.1.0
     ports:
@@ -24,6 +12,7 @@ services:
       placement:
         constraints:
         - node.role == manager
+
 networks:
   pi-swarm:
     external: true

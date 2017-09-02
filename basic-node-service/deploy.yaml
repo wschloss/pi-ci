@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  basic_node_service:
+    image: IMAGE
+    # image: registry:5000/basic-node-service:latest
+    ports:
+    - "9096:8080"
+    networks:
+    - pi-swarm
+    deploy:
+      replicas: 4
+      placement:
+        constraints:
+        - node.role == worker
+
+networks:
+  pi-swarm:
+    external: true
