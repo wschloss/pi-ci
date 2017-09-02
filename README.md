@@ -63,4 +63,4 @@
 - You can view the app on any swarm host IP on port 9096, or deploy the sample nginx controller to provide routing to the app and visualizer:
         `docker stack deploy -c stack_files/nginx.yaml nginx`
   nginx will be on any swarm host IP on port 80
-- BUG FIX NEEDED HERE: In the gogs repo, add a webhook to jenkins in order to auto kick off the build when a push to the gogs repo occurs. Updates pushed to the gogs repo will now automatically deploy to the swarm
+- BUG FIX NEEDED HERE: In the gogs repo, add a webhook to jenkins (payload url http://jenkins:8080/gogs-webhook/?job=basic-node-service) in order to auto kick off the build when a push to the gogs repo occurs. Updates pushed to the gogs repo will now automatically build and rolling deploy to the swarm
