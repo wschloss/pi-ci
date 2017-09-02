@@ -61,6 +61,6 @@
 - After Jenkins is back, create a new multibranch pipeline job for 'basic-node-service'. Add a git branch source pointing to the gogs service within the swarm (http://gogs:3000/wcschlosser/basic-node-service.git) and add your gogs creds
 - The master branch Jenkinsfile will be found after the Jenkins multibranch pipeline scan finished. Kick off the build to build and deploy the app image to the swarm
 - You can view the app on any swarm host IP on port 9096, or deploy the sample nginx controller to provide routing to the app and visualizer:
-        `docker stack deploy -c stack_files/nginx.yaml`
+        `docker stack deploy -c stack_files/nginx.yaml nginx`
   nginx will be on any swarm host IP on port 80
 - BUG FIX NEEDED HERE: In the gogs repo, add a webhook to jenkins in order to auto kick off the build when a push to the gogs repo occurs. Updates pushed to the gogs repo will now automatically deploy to the swarm
