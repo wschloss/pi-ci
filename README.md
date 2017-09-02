@@ -57,7 +57,7 @@
 - On the manager, copy the basic-node-service to a new location and initialize git
         `mkdir -p ~/gogs/basic-node-service/ && cp -r ~/pi-ci/basic-node-service/* ~/gogs/basic-node-service/ && cd ~/gogs/basic-node-service/ && git init && git add * && git commit -m "Initial commit"`
 - Push this git repo to the gogs repo you created earlier now
-- Once Jenkins is ready on manager:8000, install the 'Gogs' and 'Pipeline: Multibranch' plugin and restart Jenkins
+- Once Jenkins is ready on manager:8000, install the 'Gogs', 'Pipeline: Multibranch with defaults', 'Pipeline: Stage Step', 'Pipeline: Basic Steps', and 'Pipeline: Nodes and Processes' plugins and restart Jenkins
 - After Jenkins is back, create a new multibranch pipeline job for 'basic-node-service'. Add a git branch source pointing to the gogs service within the swarm (http://gogs:3000/wcschlosser/basic-node-service.git) and add your gogs creds
 - The master branch Jenkinsfile will be found after the Jenkins multibranch pipeline scan finished. Kick off the build to build and deploy the app image to the swarm
 - You can view the app on any swarm host IP on port 9096, or deploy the sample nginx controller to provide routing to the app and visualizer:

@@ -6,7 +6,7 @@ node {
   def build_number = env.BUILD_NUMBER
 
   stage('Build') {
-    sh "docker build -t registry:5000/basic-node-service:${branch}-${build_number} ."
+    sh "docker build -t registry:5000/basic-node-service:${branch}-${build_number} -f Dockerfile.arm ."
   }
 
   stage('Push') {
